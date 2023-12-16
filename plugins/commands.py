@@ -12,6 +12,7 @@ from info import CHANNELS, STICKERS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BA
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token, send_all
 from database.connections_mdb import active_connection
 from plugins.fsub import ForceSub
+from info import *
 from plugins.pm_filter import ENABLE_SHORTLINK
 import re
 import json
@@ -171,30 +172,16 @@ async def start(client, message):
             if not files_:
                 pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
                 try:
-                    if not await check_verification(client, message.from_user.id) and IS_VERIFY == True:
-                        btn = [[
-                            InlineKeyboardButton("♻️  ᴄʟɪᴄᴋ ᴛᴏ ᴠᴇʀɪꜰʏ  ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id))
-                        ],[
-                            InlineKeyboardButton('⁉️  ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ  ⁉️', url="https://youtu.be/0c-i2Lol6LU")
-                        ]]
-                        await message.reply_text(
-                            text="<b>You are not verified !\nKindly verify to continue !</b>",
-                            protect_content=True,
-                            reply_markup=InlineKeyboardMarkup(btn)
-                        )
-                        return
+                    # Create the inline keyboard button with callback_data
+                    button = InlineKeyboardButton('▶ Gen Stream / Download Link', callback_data=f'generate_stream_link:{file_id}')
+                    # Create the inline keyboard markup with the button
+                    keyboard = InlineKeyboardMarkup([[button]])
                     msg = await client.send_cached_media(
                         chat_id=message.from_user.id,
                         file_id=file_id,
+                        reply_markup=keyboard,
                         protect_content=True if pre == 'filep' else False,
-                        reply_markup=InlineKeyboardMarkup(
-                            [
-                             [
-                              InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
-                             ]
-                            ]
                         )
-                    )
                     filetype = msg.media
                     file = getattr(msg, filetype.value)
                     title = file.file_name
@@ -222,23 +209,16 @@ async def start(client, message):
                     f_caption=f_caption
             if f_caption is None:
                 f_caption = f"{files1.file_name}"
-            if not await check_verification(client, message.from_user.id) and IS_VERIFY == True:
-                btn = [[
-                            InlineKeyboardButton("♻️  ᴄʟɪᴄᴋ ᴛᴏ ᴠᴇʀɪꜰʏ  ♻️", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id))
-                        ],[
-                            InlineKeyboardButton('⁉️  ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ  ⁉️', url="https://youtu.be/0c-i2Lol6LU")
-                    ]]
-                await message.reply_text(
-                    text="<b>You are not verified !\nKindly verify to continue !</b>",
-                    protect_content=True,
-                    reply_markup=InlineKeyboardMarkup(btn)
-                )
-                return
+            button = InlineKeyboardButton('▶ Gen Stream / Download Link', callback_data=f'generate_stream_link:{file_id}')
+            # Create the inline keyboard markup with the button
+            keyboard = InlineKeyboardMarkup([[button]])
             await client.send_cached_media(
                 chat_id=message.from_user.id,
                 file_id=file_id,
                 caption=f_caption,
+                reply_markup=keyboard,  # Use the created keyboard
                 protect_content=True if pre == 'filep' else False,
+                )
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
