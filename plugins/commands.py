@@ -181,7 +181,14 @@ async def start(client, message):
                         file_id=file_id,
                         reply_markup=keyboard,
                         protect_content=True if pre == 'filep' else False,
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                             [
+                              InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
+                             ]
+                            ]
                         )
+                    )
                     filetype = msg.media
                     file = getattr(msg, filetype.value)
                     title = file.file_name
