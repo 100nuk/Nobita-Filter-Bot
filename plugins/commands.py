@@ -8,7 +8,7 @@ from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files
 from database.users_chats_db import db
-from info import CHANNELS, STICKERS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN, IS_VERIFY, MVG_LNK, OWN_LNK, TUTORIAL, IS_TUTORIAL, SHORTLINK_API, SHORTLINK_URL
+from info import *
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token, send_all
 from database.connections_mdb import active_connection
 from plugins.fsub import ForceSub
@@ -127,6 +127,7 @@ async def start(client, message):
             if f_caption is None:
                 f_caption = f"{title}"
             try:
+                # Create the inline keyboard button with callback_data
                 await client.send_cached_media(
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
@@ -134,9 +135,15 @@ async def start(client, message):
                     protect_content=msg.get('protect', False),
                     reply_markup=InlineKeyboardMarkup(
                         [
-                         [
-                          InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
-                         ]
+                            [
+                                InlineKeyboardButton('● sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
+                                InlineKeyboardButton('● ᴊᴏɪɴ ᴄʜᴀɴɴʟᴇ', url=CHNL_LNK)
+                            ],[
+                                InlineKeyboardButton('● ʙᴏᴛ ᴏᴡɴᴇʀ', url="https://t.me/KK_BOTS")
+                            ],
+                            [
+                                InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴ', callback_data=f'generate_stream_link:{file_id}') #Don't change anything without contacting me @LazyDeveloperr
+                            ]
                         ]
                     )
                 )
@@ -151,8 +158,13 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
-                         ]
+                          InlineKeyboardButton('● sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
+                          InlineKeyboardButton('● ᴊᴏɪɴ ᴄʜᴀɴɴʟᴇ', url=CHNL_LNK)
+                       ],[
+                          InlineKeyboardButton("● ʙᴏᴛ ᴏᴡɴᴇʀ", url="t.me/KK_BOTS")
+                         ],[ 
+                            InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴ', callback_data=f'generate_stream_link:{file_id}') #Don't change anything without contacting me @LazyDeveloperr
+                            ]
                         ]
                     )
                 )
@@ -188,12 +200,19 @@ async def start(client, message):
                         file_id=file_id,
                         protect_content=True if pre == 'filep' else False,
                         reply_markup=InlineKeyboardMarkup(
+                           [
                             [
+                              InlineKeyboardButton('● sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
+                              InlineKeyboardButton('● ᴊᴏɪɴ ᴄʜᴀɴɴʟᴇ', url=CHNL_LNK)
+                           ],[
+                              InlineKeyboardButton("● ʙᴏᴛ ᴏᴡɴᴇʀ", url="t.me/KK_BOTS")
+                             ],
                              [
-                              InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
+                              InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ', callback_data=f'generate_stream_link:{file_id}') #Don't change anything without contacting me @LazyDeveloperr
+
                              ]
                             ]
-                        )
+                       )
                     )
                     filetype = msg.media
                     file = getattr(msg, filetype.value)
@@ -356,7 +375,13 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                      [
-                      InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
+                      InlineKeyboardButton('● sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
+                      InlineKeyboardButton('● ᴊᴏɪɴ ᴄʜᴀɴɴʟᴇ', url=CHNL_LNK)
+                   ],[
+                      InlineKeyboardButton("● ʙᴏᴛ ᴏᴡɴᴇʀ", url="t.me/KK_BOTS")
+                     ],
+                     [
+                        InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ', callback_data=f'generate_stream_link:{file_id}') #Don't change anything without contacting me @LazyDeveloperr
                      ]
                     ]
                 )
@@ -406,13 +431,19 @@ async def start(client, message):
         caption=f_caption,
         protect_content=True if pre == 'filep' else False,
         reply_markup=InlineKeyboardMarkup(
-            [
-             [
-              InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
-             ]
-            ]
-        )
-    )
+                    [
+                     [
+                      InlineKeyboardButton('● sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
+                      InlineKeyboardButton('● ᴊᴏɪɴ ᴄʜᴀɴɴʟᴇ', url=CHNL_LNK)
+                   ],[
+                      InlineKeyboardButton("● ʙᴏᴛ ᴏᴡɴᴇʀ", url="t.me/KK_BOTS")
+                     ],
+                     [
+                        InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ', callback_data=f'generate_stream_link:{file_id}') #Don't change anything without contacting me @LazyDeveloperr
+                     ]
+                    ]
+                )
+            )
     k = await msg.reply("<b>⚠️  ᴀꜰᴛᴇʀ 10 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ  🗑️</b>", quote=True)
     await asyncio.sleep(600)
     await msg.delete()
