@@ -226,15 +226,7 @@ async def start(client, message):
                 reply_markup=keyboard,  # Use the created keyboard
                 protect_content=True if pre == 'filep' else False,
                 )
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                     [
-                      InlineKeyboardButton("❤️‍🔥 ᴄʜᴀɴɴᴇʟ​ ❤️‍🔥", url="https://telegram.me/BotszList")
-                     ]
-                    ]
-                )
-            )
-    
+                
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("<b>Please wait...</b>")
         b_string = data.split("-", 1)[1]
