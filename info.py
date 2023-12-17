@@ -1,5 +1,5 @@
 import re, logging
-from os import environ
+from os import environ,getenv
 from Script import script
 from dotenv import load_dotenv
 load_dotenv()
