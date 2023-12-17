@@ -1231,7 +1231,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("● ғᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=lazy_download),  # we download Link
                                                     InlineKeyboardButton('● ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ', url=lazy_stream)]])  # web stream Link
-            )
+       )
             
     elif query.data == "purgee":
         buttons = [[
