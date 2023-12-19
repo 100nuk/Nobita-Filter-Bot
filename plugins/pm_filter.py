@@ -1208,8 +1208,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
 
-    elif query.lazyData.startswith("generate_stream_link"):
-        _, file_id = lazyData.split(":")
+    elif query.data.startswith("generate_stream_link"):
+        _, file_id = data.split(":")
         try:
             user_id = query.from_user.id
             username =  query.from_user.mention 
