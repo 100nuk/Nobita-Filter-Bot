@@ -1,4 +1,5 @@
 import asyncio
+import asyncio
 import re
 import ast
 import math
@@ -1207,7 +1208,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer("Yᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ sᴜғғɪᴄɪᴀɴᴛ ʀɪɢᴛs ᴛᴏ ᴅᴏ ᴛʜɪs !", show_alert=True)
 
-    elif lazyData.startswith("generate_stream_link"):
+    elif query.lazyData.startswith("generate_stream_link"):
         _, file_id = lazyData.split(":")
         try:
             user_id = query.from_user.id
