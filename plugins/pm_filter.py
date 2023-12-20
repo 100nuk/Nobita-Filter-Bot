@@ -45,6 +45,26 @@ BUTTONS1 = {}
 BUTTONS2 = {}
 SPELL_CHECK = {}
 
+@Client.on_callback_query(filters.regex(r"^stream"))
+async def stream_downloader(bot, query):
+    file_id = query.data.split('#', 1)[1]
+    msg = await bot.send_cached_media(
+        chat_id=BIN_CHANNEL,
+        file_id=file_id)
+    online = f"{URL}watch/{msg.id}"
+    download = f"{URL}download/{msg.id}"
+    await query.edit_message_reply_markup(
+        reply_markup=InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online),
+                InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
+            ],[
+                InlineKeyboardButton('⁉️ ᴄʟᴏsᴇ ⁉️', callback_data='close_data')
+            ]
+        ]
+    ))
+
 @Client.on_message((filters.group | filters.private) & filters.text & filters.incoming)
 async def give_filter(client, message):
     if message.chat.id != SUPPORT_CHAT_ID:
