@@ -151,7 +151,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f'generate_stream_link:{file_id}'),
+                          InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f"stream#{file.file_id}"),
                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                        ],[
                           InlineKeyboardButton("Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ", url="https://telegram.me/AllRequestGroups")
@@ -170,7 +170,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                          [
-                          InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f'generate_stream_link:{file_id}'),
+                          InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f"stream#{file.file_id}"),
                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                        ],[
                           InlineKeyboardButton("Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ", url="https://telegram.me/AllRequestGroups")
@@ -330,7 +330,7 @@ async def start(client, message):
                             [
                                 InlineKeyboardButton('Watch Online/ Fast Download', callback_data=f'generate_stream_link:{file_id}')
                             ],[
-                                InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f'generate_stream_link:{file_id}'),
+                                InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f"stream#{file.file_id}"),
                                 InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                             ],[
                                 InlineKeyboardButton("Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ", url="https://telegram.me/AllRequestGroups")
@@ -397,7 +397,7 @@ async def start(client, message):
                             [
                                 InlineKeyboardButton('Watch Online/ Fast Download', callback_data=f'generate_stream_link:{file_id}')
                             ],[
-                                InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f'generate_stream_link:{file_id}'),
+                                InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f"stream#{file.file_id}"),
                                 InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                             ],[
                                 InlineKeyboardButton("Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ", url="https://telegram.me/AllRequestGroups")
@@ -462,7 +462,7 @@ async def start(client, message):
                     [
                         InlineKeyboardButton('Watch Online/ Fast Download', callback_data=f'generate_stream_link:{file_id}')
                     ],[
-                        InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f'generate_stream_link:{file_id}'),
+                        InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', callback_data=f"stream#{file.file_id}"),
                         InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                     ],[
                         InlineKeyboardButton("Mᴏᴠɪᴇ Rᴇᴏ̨ᴜᴇsᴛ Gʀᴏᴜᴘ", url="https://telegram.me/AllRequestGroups")
